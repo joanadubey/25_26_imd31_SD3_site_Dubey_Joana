@@ -50,3 +50,13 @@ a {
   font-family: "BornLosersSans", sans-serif;
   font-size: 96px;
 }
+
+.less-important-word {
+  color: var(--pink);
+  text-align: center;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 104%;
+  text-transform: uppercase;
+}

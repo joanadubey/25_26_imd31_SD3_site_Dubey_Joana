@@ -35,26 +35,29 @@ tl.to(".intro-bird-image", {
   .to(".intro-crique-text", { x: "1000%", duration: 7, delay: "-7" })
   .to(".intro", { opacity: "0" });
 
-// Séquence 2
 const tl2 = gsap.timeline({
   scrollTrigger: {
     trigger: ".vacancier",
     start: "top top",
     end: "bottom+=500% top",
     pin: true,
-    scrub: true,
+    scrub: 2,
     markers: false,
   },
 });
 
 tl2
   .to(".vacancier-text", { ease: "sine.inOut", opacity: "100" })
-  .to(".vacancier-herbe-right", { x: "-70%", duration: "3" })
-  .to(".vacancier-herbe-left", { x: "70%", duration: "3" }, "-=3")
-  .to(".vacancier-right", { x: "-70%", duration: "3" }, "-=3")
-  .to(".vacancier-left", { x: "70%", duration: "3" }, "-=3")
+
+  .to(".vacancier-herbe-right", { x: "-90%", duration: 2 })
+  .to(".vacancier-herbe-left", { x: "90%", duration: 2 }, "-=1.95")
+
+  .to(".vacancier-right", { x: "-110%", duration: 3.2 }, "-=1.8")
+  .to(".vacancier-left", { x: "80%", duration: 3.2 }, "-=3")
+
   .to(".vacancier-text", { duration: 2, ease: "sine.inOut", opacity: "0" })
-  .to(".vacancier-herbe-right, .vacancier-right", { x: "70%", duration: "1" })
+
+  .to(".vacancier-herbe-right, .vacancier-right", { x: "70%", duration: 1 })
   .to(".vacancier-herbe-left, .vacancier-left", { x: "-70%" }, "-=1");
 
 // Séquence 3
@@ -73,7 +76,7 @@ tl3
   .to(".chateau-text", { ease: "sine.inOut", opacity: "100" })
   .to(".chateau-image", { y: "-140%", duration: 10 })
   .to(".chateau-phrase", { y: "-200%", duration: "5" }, "-=5")
-  .to(".chateau-image", { y: "-250%", duration: 10 })
+  .to(".chateau-image", { y: "-300%", duration: 12 })
   .to(".chateau-image chateau-text", { opacity: "0" });
 
 // Vidéo
@@ -130,26 +133,27 @@ video.addEventListener("ended", () => {
       transformOrigin: "center center",
       duration: 5,
     })
-    .to(".issue", {
-      opacity: "0",
+    .to(".horizontal", {
+      opacity: "1",
+      duration: "1",
     });
 });
 
-ScrollTrigger.refresh();
-// === Animation scroll horizontal ===
-const tlHorizontal = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".horizontal", // déclencheur
-    start: "bottom bottom",
-    end: "+=2000", // distance de scroll horizontale (à ajuster selon la longueur de l'image)
-    pin: true, // la section reste fixe
-    scrub: true, // animation fluide au scroll
-    markers: true, // mettre true pour tester
-  },
-});
+// ScrollTrigger.refresh();
+// // === Animation scroll horizontal ===
+// const tlHorizontal = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".horizontal", // déclencheur
+//     start: "bottom bottom",
+//     end: "+=2000", // distance de scroll horizontale (à ajuster selon la longueur de l'image)
+//     pin: true, // la section reste fixe
+//     scrub: true, // animation fluide au scroll
+//     markers: true, // mettre true pour tester
+//   },
+// });
 
-// Animation : défilement horizontal de l’image
-tlHorizontal.to(".horizontal-image", {
-  x: "-100%",
-  ease: "none",
-});
+// // Animation : défilement horizontal de l’image
+// tlHorizontal.to(".horizontal-image", {
+//   x: "-100%",
+//   ease: "none",
+// });

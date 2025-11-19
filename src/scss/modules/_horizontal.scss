@@ -1,14 +1,32 @@
+// .horizontal {
+//   position: relative;
+//   height: 100vh;
+//   overflow: scroll;
+//   width: 100vw;
+//   opacity: 0;
+// }
+
+// .horizontal-image {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 2766.595px;
+//   height: 60%;
+// }
+
 .horizontal {
   position: relative;
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden; /* on cache le reste de l'image qui dépasse */
   width: 100vw;
+  opacity: 0;
 }
 
 .horizontal-image {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 2766px; /* largeur de ton image */
+  bottom: 0; /* coller en bas */
+  left: 0; /* coller à gauche */
+  width: auto; /* on garde les proportions de l'image */
+  height: 100%; /* prend toute la hauteur du viewport */
+  max-width: none; /* pour que l'image ne se restreigne pas */
 }
