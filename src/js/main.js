@@ -113,6 +113,7 @@ tl3
 
 // });
 
+// Timeline pour la première partie (soleil, texte, scale)
 const tl4 = gsap.timeline({
   scrollTrigger: {
     trigger: ".issue",
@@ -133,39 +134,77 @@ tl4
     y: "780%",
     transformOrigin: "center center",
     duration: 5,
+  })
+  // On fait disparaître complètement l'élément
+  .to(".issue", {
+    duration: 0, // instantané
+    onComplete: () => {
+      document.querySelector(".issue").classList.add("hidden");
+    },
   });
 
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+// Timeline pour le scroll horizontal
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".horizontal",
+      start: "top top",
+      end: () => "+=" + document.querySelector(".horizontal-image").scrollWidth, // scroll basé sur la largeur de l'image
+      pin: true, // bloque le container
+      scrub: true,
+      anticipatePin: 1,
+      markers: true,
+    },
+  })
+  .to(".horizontal-image", {
+    x: () =>
+      -(
+        document.querySelector(".horizontal-image").scrollWidth -
+        window.innerWidth
+      ), // déplace l'image vers la gauche
+    ease: "none",
+  })
+  .to(".horizontal-image", { opacity: 0 }); // disparait à la fin
 
-gsap.registerPlugin(ScrollTrigger);
-
-const img = document.querySelector(".horizontal-image");
-
-// On attend que l’image soit chargée pour calculer sa largeur réelle
-img.addEventListener("load", () => {
-  const imgWidth = img.offsetWidth;
-  const containerWidth = document.querySelector(
-    ".container.horizontal"
-  ).offsetWidth;
-
-  const scrollDistance = imgWidth - containerWidth;
-
-  // Si l’image est plus large que le conteneur, on crée l’animation
-  if (scrollDistance > 0) {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".container.horizontal",
-          start: "top top",
-          end: `+=${scrollDistance}`, // distance du scroll
-          scrub: true,
-          pin: true,
-        },
-      })
-      .to(img, {
-        x: -scrollDistance, // déplacement vers la gauche
-        ease: "none",
-      });
-  }
+const tlVieux = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".vieux",
+    start: "top top",
+    end: "bottom+=150%", // durée du scroll
+    pin: true,
+    scrub: true,
+    markers: true,
+  },
 });
+
+// La femme arrive depuis beaucoup plus haut à gauche
+tlVieux.fromTo(
+  ".vieux-femme",
+  { x: "-150%", y: "-150%", opacity: 0, duration: 5 },
+  { x: "0%", y: "0%", opacity: 1, ease: "sine.inOut", duration: 5 }
+);
+
+// L'homme arrive depuis beaucoup plus bas à droite
+tlVieux.fromTo(
+  ".vieux-homme",
+  { x: "100%", y: "100%", opacity: 0, duration: 5 },
+  { x: "0%", y: "0%", opacity: 1, ease: "sine.inOut", duration: 5 },
+  "<" // commence en même temps
+);
+
+tlVieux
+  .to(".vieux-femme", {
+    x: "-200%",
+    y: "-200%",
+    opacity: 0,
+    duration: 2,
+    ease: "power2.in",
+    delay: 5,
+  })
+  .to(
+    ".vieux-homme",
+    { x: "150%", y: "150%", opacity: 0, duration: 2, ease: "power2.in" },
+    "<" // commence en même temps que la femme
+  )
+
+  .to(".vieux-text", { ease: "sine.inOut", opacity: "1" });

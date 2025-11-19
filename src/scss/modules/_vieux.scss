@@ -1,0 +1,48 @@
+// .vieux-femme {
+//   width: 933.449px;
+//   height: 433.563px;
+//   position: absolute;
+//   top: -20%;
+//   left: 0;
+//   z-index: 13;
+// }
+
+// .vieux-homme {
+//   width: 100vw;
+//   height: auto;
+//   position: absolute;
+//   bottom: -55%;
+//   right: 0%;
+//   z-index: 13;
+// }
+
+.vieux-femme {
+  width: 933px;
+  height: 433px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  opacity: 0;
+}
+
+.vieux-homme {
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 13;
+  opacity: 0;
+}
+
+.vieux-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  text-align: center;
+  opacity: 0;
+  z-index: 14;
+}
