@@ -208,3 +208,36 @@ tlVieux
   )
 
   .to(".vieux-text", { ease: "sine.inOut", opacity: "1" });
+
+// Timeline pour la partie "end"
+const tlEnd = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".end",
+    start: "top top",
+    end: "bottom top",
+    scrub: 1,
+    pin: true, // fixe la section pendant le scroll
+    markers: true,
+  },
+});
+
+// Couverture BD qui arrive depuis la gauche
+tlEnd.to(".end-couv-bd", {
+  x: "0%",
+  opacity: 1,
+  duration: 1.5,
+  ease: "power2.out",
+});
+
+// Les textes finaux apparaissent les uns après les autres depuis la droite
+tlEnd.to(
+  ".end-all-infos > div",
+  {
+    x: "0%",
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.3, // décalage entre chaque élément
+  },
+  "-=0.5" // commence un peu avant la fin de l'image
+);
