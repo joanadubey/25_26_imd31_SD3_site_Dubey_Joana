@@ -84,32 +84,27 @@ const videoContainer = document.querySelector(".container.video");
 const video = document.querySelector("#Video");
 
 ScrollTrigger.create({
-  trigger: ".sequence-1",
-  start: "bottom bottom",
+  trigger: videoContainer,
+  start: "top top",
   markers: true,
   id: "Video",
   onEnter: () => {
-    videoContainer.classList.add("video-visible");
+    document.body.style.overflow = "hidden";
     video.play();
   },
   onLeave: () => {
-    videoContainer.classList.remove("video-visible");
     video.pause();
   },
-  onEnterBack: () => video.play(),
-  onLeaveBack: () => video.pause(),
+  onEnterBack: () => {
+    document.body.style.overflow = "hidden";
+    video.play();
+  },
+  onLeaveBack: () => {
+    video.pause();
+  },
 });
-
-video.addEventListener("ended", () => {
-  // Supprimer les anciens triggers
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
-  //   // Passer à la séquence suivante
-  document.querySelector(".sequence-1").classList.remove("visible");
-  document.querySelector(".sequence-2").classList.add("visible");
-
-  //   // Recalcul du scroll
-  ScrollTrigger.refresh();
+video.addEventListener("ended", (e) => {
+  document.body.style.overflow = "";
 });
 
 // Timeline pour la première partie (soleil, texte, scale)
