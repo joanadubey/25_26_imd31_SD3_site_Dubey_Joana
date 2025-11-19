@@ -1,0 +1,47 @@
+.vacancier-text {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  z-index: 5;
+  color: rgb(255, 53, 194);
+  font-size: 45;
+  opacity: 0;
+}
+
+.vacancier-herbe-right {
+  width: 70%;
+  height: 25%;
+  background-color: green;
+  right: -70%;
+  bottom: 0;
+  z-index: 6;
+  position: absolute;
+}
+.vacancier-herbe-left {
+  width: 70%;
+  height: 25%;
+  background-color: green;
+  left: -70%;
+  bottom: 0;
+  z-index: 6;
+  position: absolute;
+}
+
+.vacancier-right {
+  width: 50%;
+  height: 25%;
+  background-color: pink;
+  right: -50%;
+  bottom: 20%;
+  z-index: 5;
+  position: absolute;
+}
+.vacancier-left {
+  width: 50%;
+  height: 25%;
+  background-color: pink;
+  left: -50%;
+  bottom: 20%;
+  z-index: 5;
+  position: absolute;
+}

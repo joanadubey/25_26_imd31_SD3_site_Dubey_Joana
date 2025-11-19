@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>eikon parcel starter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scss/main.scss" />
+  </head>
+  <body>
+    <div class="sequence sequence-1 visible">
+      <div class="container intro">
+        <div class="intro-bird-image">
+          <img class="intro-background" src="images/oiseau-image.png" alt="" />
+        </div>
+        <div class="intro-title">CHATEAU DE SABLE</div>
+        <img
+          class="intro-background"
+          src="images/intro-background.jpg"
+          alt=""
+        />
+        <img class="intro-crique-image" src="images/crique.png" alt="" />
+        <div class="intro-crique-text">
+          Une crique <span class="important-word">paisible</span>
+        </div>
+      </div>
+      <div class="container vacancier">
+        <div class="vacancier-text">Des vacanciers</div>
+        <div class="vacancier-herbe-right"></div>
+        <div class="vacancier-herbe-left"></div>
+        <div class="vacancier-right"></div>
+        <div class="vacancier-left"></div>
+      </div>
+      <div class="container chateau">
+        <div class="chateau-text">Un chateau de sable</div>
+        <div class="chateau-image"></div>
+        <div class="chateau-phrase"></div>
+      </div>
+      <div class="container video xvideo-visible">
+        <video id="Video" width="100%" muted preload="auto">
+          <source
+            class="video-image"
+            src="images/video_transition_code.mp4"
+            type="video/mp4"
+          />
+          Ton navigateur ne supporte pas la vidéo.
+        </video>
+      </div>
+    </div>
+    <div class="sequence sequence-2 xvisible">
+      <div class="container issue">
+        <img class="issue-image" src="images/issue_vraie.png" alt="" />
+        <div class="issue-soleil"></div>
+        <div class="issue-text">un lieu sans issue...</div>
+      </div>
+      <div class="horizontal">
+        <img class="horizontal-image" src="images/plage_réunie.png" alt="" />
+      </div>
+    </div>
+    <script src="js/main.js" type="module"></script>
+  </body>
+</html>

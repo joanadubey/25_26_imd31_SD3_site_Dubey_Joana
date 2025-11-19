@@ -1,0 +1,49 @@
+.intro-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+.intro-title {
+  position: absolute;
+  color: var(--pink);
+  font-size: 150px;
+  font-family: "BornLosersSans", sans-serif;
+  top: 40%;
+  left: 28%;
+  z-index: 1;
+}
+
+.intro-bird-image {
+  position: absolute;
+  bottom: -150;
+  left: 20;
+  z-index: 2;
+  width: 417.16px;
+  height: 519.37px;
+}
+
+.intro-crique-image {
+  bottom: -80%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+
+.intro-crique-text {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  z-index: 4;
+  color: var(--pink);
+  text-align: center;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 104%;
+  text-transform: uppercase;
+  opacity: 0;
+  opacity: 0;
+}

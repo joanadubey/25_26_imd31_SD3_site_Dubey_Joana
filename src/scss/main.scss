@@ -1,0 +1,16 @@
+@import "font";
+@import "base";
+@import "layout";
+@import "modules/intro";
+@import "modules/vacancier";
+@import "modules/chateau";
+@import "modules/video";
+@import "modules/issue";
+@import "modules/horizontal";
+@import "modules/sequence";
+
+:root {
+  --pink: #cd0c7a;
+  --black: #000000;
+  --white: #ffffff;
+}

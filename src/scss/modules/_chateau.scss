@@ -1,0 +1,29 @@
+.chateau-image {
+  width: 55%;
+  height: 70%;
+  bottom: -70%;
+  right: 0;
+  background-color: pink;
+  z-index: 8;
+  position: absolute;
+}
+
+.chateau-phrase {
+  width: 20%;
+  height: 30%;
+  bottom: -30%;
+  left: 20%;
+  background-color: pink;
+  z-index: 9;
+  position: absolute;
+}
+
+.chateau-text {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  z-index: 7;
+  color: rgb(255, 53, 194);
+  font-size: 45;
+  opacity: 0;
+}
