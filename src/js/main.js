@@ -80,80 +80,92 @@ tl3
   .to(".chateau-image chateau-text", { opacity: "0" });
 
 // Vidéo
-const videoContainer = document.querySelector(".container.video");
-const video = document.querySelector("#Video");
+// const videoContainer = document.querySelector(".container.video");
+// const video = document.querySelector("#Video");
 
-ScrollTrigger.create({
-  trigger: ".sequence-1",
-  start: "bottom bottom",
-  markers: true,
-  id: "Video",
-  onEnter: () => {
-    videoContainer.classList.add("video-visible");
-    video.play();
+// ScrollTrigger.create({
+//   trigger: ".sequence-1",
+//   start: "bottom bottom",
+//   markers: true,
+//   id: "Video",
+//   onEnter: () => {
+//     videoContainer.classList.add("video-visible");
+//     video.play();
+//   },
+//   onLeave: () => {
+//     videoContainer.classList.remove("video-visible");
+//     video.pause();
+//   },
+//   onEnterBack: () => video.play(),
+//   onLeaveBack: () => video.pause(),
+// });
+
+// video.addEventListener("ended", () => {
+//   // Supprimer les anciens triggers
+//   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+//   // Passer à la séquence suivante
+//   document.querySelector(".sequence-1").classList.remove("visible");
+//   document.querySelector(".sequence-2").classList.add("visible");
+
+//   // Recalcul du scroll
+//   ScrollTrigger.refresh();
+
+// });
+
+const tl4 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".issue",
+    start: "top top",
+    end: "bottom+=200% top",
+    pin: true,
+    scrub: 5,
+    markers: false,
   },
-  onLeave: () => {
-    videoContainer.classList.remove("video-visible");
-    video.pause();
-  },
-  onEnterBack: () => video.play(),
-  onLeaveBack: () => video.pause(),
 });
 
-video.addEventListener("ended", () => {
-  // Supprimer les anciens triggers
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
-  // Passer à la séquence suivante
-  document.querySelector(".sequence-1").classList.remove("visible");
-  document.querySelector(".sequence-2").classList.add("visible");
-
-  // Recalcul du scroll
-  ScrollTrigger.refresh();
-
-  // === Création du trigger pour la séquence 2 (issue) ===
-  const tl4 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".issue",
-      start: "top top",
-      end: "bottom+=200% top",
-      pin: true,
-      scrub: 5,
-      markers: false,
-    },
+tl4
+  .to(".issue-soleil", { x: "100%", y: "-190%", duration: 5 })
+  .to(".issue-text", { x: "-30%", y: "430%", duration: 1 }, "-=5")
+  .to(".issue", {
+    scale: 20,
+    x: "-380%",
+    y: "780%",
+    transformOrigin: "center center",
+    duration: 5,
   });
 
-  tl4
-    .to(".issue-soleil", { x: "100%", y: "-190%", duration: "5" })
-    .to(".issue-text", { x: "-30%", y: "430%", duration: "1" }, "-=5")
-    .to(".issue", {
-      scale: 20, // zoom de la "caméra"
-      x: "-380%", // ajuster pour centrer sur le soleil
-      y: "780%",
-      transformOrigin: "center center",
-      duration: 5,
-    })
-    .to(".horizontal", {
-      opacity: "1",
-      duration: "1",
-    });
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const img = document.querySelector(".horizontal-image");
+
+// On attend que l’image soit chargée pour calculer sa largeur réelle
+img.addEventListener("load", () => {
+  const imgWidth = img.offsetWidth;
+  const containerWidth = document.querySelector(
+    ".container.horizontal"
+  ).offsetWidth;
+
+  const scrollDistance = imgWidth - containerWidth;
+
+  // Si l’image est plus large que le conteneur, on crée l’animation
+  if (scrollDistance > 0) {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".container.horizontal",
+          start: "top top",
+          end: `+=${scrollDistance}`, // distance du scroll
+          scrub: true,
+          pin: true,
+        },
+      })
+      .to(img, {
+        x: -scrollDistance, // déplacement vers la gauche
+        ease: "none",
+      });
+  }
 });
-
-// ScrollTrigger.refresh();
-// // === Animation scroll horizontal ===
-// const tlHorizontal = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: ".horizontal", // déclencheur
-//     start: "bottom bottom",
-//     end: "+=2000", // distance de scroll horizontale (à ajuster selon la longueur de l'image)
-//     pin: true, // la section reste fixe
-//     scrub: true, // animation fluide au scroll
-//     markers: true, // mettre true pour tester
-//   },
-// });
-
-// // Animation : défilement horizontal de l’image
-// tlHorizontal.to(".horizontal-image", {
-//   x: "-100%",
-//   ease: "none",
-// });
