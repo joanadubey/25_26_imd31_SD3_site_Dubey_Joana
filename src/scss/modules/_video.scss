@@ -6,11 +6,17 @@
   position: absolute;
 }
 
+// .container.video {
+//   pointer-events: none;
+// }
+
 .container.video {
-  // position: fixed;
-  // inset: 0;
-  // opacity: 0;
+  position: fixed;
+  inset: 0;
+  opacity: 0; /* invisible */
   pointer-events: none;
+  z-index: 999; /* devant */
+  transition: opacity 0.3s ease-out;
 }
 
 .video.video-visible {
