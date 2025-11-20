@@ -221,7 +221,7 @@ tlEnd.to(".end > *:not(.end-reload-button)", {
   opacity: 0,
   duration: 1,
   ease: "power2.out",
-  delay: 10,
+  delay: 20,
 });
 
 tlEnd.to(
