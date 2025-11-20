@@ -4,6 +4,7 @@
   left: 0;
   width: 100%;
   z-index: 0;
+  height: 100vh;
 }
 .intro-title {
   position: absolute;
@@ -42,7 +43,7 @@
 
 .intro-crique-text {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 67%;
   z-index: 4;
   opacity: 0;

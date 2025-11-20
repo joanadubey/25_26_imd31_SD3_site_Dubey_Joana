@@ -15,37 +15,6 @@ a {
   overflow: hidden;
 }
 
-@font-face {
-  font-family: "BornLosersSans";
-  src: url("/src/fonts/BornLosersSans-Regular.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* SATOSHI — REGULAR */
-@font-face {
-  font-family: "Satoshi";
-  src: url("/src/fonts/Satoshi-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* SATOSHI — MEDIUM */
-@font-face {
-  font-family: "Satoshi";
-  src: url("/src/fonts/Satoshi-Medium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-/* SATOSHI — LIGHT ITALIC */
-@font-face {
-  font-family: "Satoshi";
-  src: url("/src/fonts/Satoshi-LightItalic.otf") format("opentype");
-  font-weight: 300;
-  font-style: italic;
-}
-
 .important-word {
   font-family: "BornLosersSans", sans-serif;
   font-size: 96px;

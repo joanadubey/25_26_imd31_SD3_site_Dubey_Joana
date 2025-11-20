@@ -12,39 +12,32 @@ const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".intro",
     start: "top top",
-    end: "bottom+=1500% top",
+    end: "bottom+=900% top",
     pin: true,
     scrub: true,
     markers: false,
   },
 });
 
-tl.to(".intro-bird-image", { x: "390%", y: "-200%", duration: 6, ease: "none" })
-  .to(".intro-crique-image", { y: "-95%", duration: 6, ease: "none" }, "+=5")
+tl.to(".intro-bird-image", { x: "390%", y: "-200%", duration: 8, ease: "none" })
+  .to(".intro-crique-image", { y: "-100%", duration: 5, ease: "none" })
   .to(
     ".intro-crique-text",
-    { ease: "sine.inOut", opacity: "100", duration: 3 },
+    {
+      opacity: 1,
+      duration: 4,
+      ease: "sine.inOut",
+    },
     "+=2"
   )
   .to(".intro-crique-image", {
     scale: "20",
     x: "720%",
-    duration: 7,
-    delay: "10",
+    duration: 5,
+    delay: "3",
   })
-  .to(".intro-crique-text", { x: "1000%", duration: 7, delay: "-7" })
+  .to(".intro-crique-text", { x: "1000%", duration: 7, delay: "-5" })
   .to(".intro", { opacity: "0" });
-
-const tl2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".vacancier",
-    start: "top top",
-    end: "bottom+=500% top",
-    pin: true,
-    scrub: 2,
-    markers: false,
-  },
-});
 
 const arrow = document.querySelector(".intro-arrow");
 let t = 0;
@@ -57,13 +50,28 @@ function animateArrow() {
 }
 animateArrow();
 
+const tl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".vacancier",
+    start: "top top",
+    end: "bottom+=500% top",
+    pin: true,
+    scrub: 2,
+    markers: false,
+  },
+});
+
 tl2
-  .to(".vacancier-text", { ease: "sine.inOut", opacity: "100" })
+  .to(".vacancier-text", {
+    opacity: 1,
+    duration: 4,
+    ease: "sine.inOut",
+  })
   .to(".vacancier-herbe-right", { x: "-90%", duration: 2 })
   .to(".vacancier-herbe-left", { x: "90%", duration: 2 }, "-=1.95")
   .to(".vacancier-right", { x: "-110%", duration: 3.2 }, "-=1.8")
   .to(".vacancier-left", { x: "80%", duration: 3.2 }, "-=3")
-  .to(".vacancier-text", { duration: 2, ease: "sine.inOut", opacity: "0" })
+  .to(".vacancier-text", { duration: 1, ease: "sine.inOut", opacity: "0" })
   .to(".vacancier-herbe-right, .vacancier-right", { x: "70%", duration: 1 })
   .to(".vacancier-herbe-left, .vacancier-left", { x: "-70%" }, "-=1");
 
@@ -80,7 +88,11 @@ const tl3 = gsap.timeline({
 });
 
 tl3
-  .to(".chateau-text", { ease: "sine.inOut", opacity: "100" })
+  .to(".chateau-text", {
+    opacity: 1,
+    duration: 4,
+    ease: "sine.inOut",
+  })
   .to(".chateau-image", { y: "-140%", duration: 10 })
   .to(".chateau-phrase", { y: "-200%", duration: "5" }, "-=5")
   .to(".chateau-image", { y: "-300%", duration: 12 })
@@ -115,7 +127,7 @@ const tl4 = gsap.timeline({
 
 tl4
   .to(".issue-soleil", { x: "100%", y: "-190%", duration: 5 })
-  .to(".issue-text", { x: "-30%", y: "430%", duration: 1 }, "-=5")
+  .to(".issue-text", { x: "-30%", y: "430%", duration: 5 }, "-=5")
   .to(".issue", {
     scale: 20,
     x: "-380%",
@@ -190,7 +202,8 @@ tlVieux
     { x: "150%", y: "150%", opacity: 0, duration: 2, ease: "power2.in" },
     "<"
   )
-  .to(".vieux-text", { ease: "sine.inOut", opacity: "1" }, "-=2");
+  .to(".vieux-text", { ease: "sine.inOut", opacity: "1", duration: 3 }, "-=2")
+  .to(".vieux-text", { ease: "sine.inOut", opacity: "0", duration: 3 }, "+=7");
 
 // Timeline pour la partie "end"
 const tlEnd = gsap.timeline({
@@ -220,8 +233,9 @@ tlEnd.to(
   { x: "0%", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.3 },
   "-=0.5"
 );
+
 tlEnd.to(
   ".end-button",
-  { x: "0%", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.3 },
+  { x: "0%", opacity: 1, duration: 1, ease: "power2.out" },
   "-=0.5"
 );
