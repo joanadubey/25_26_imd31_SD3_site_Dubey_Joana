@@ -1,0 +1,15 @@
+.scroll-warning {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+  white-space: nowrap;
+  background-color: var(--white);
+  padding: 5% 5%;
+  opacity: 0;
+  border: 3px solid var(--pink);
+}

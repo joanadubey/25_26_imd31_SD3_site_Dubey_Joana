@@ -14,13 +14,6 @@ a {
   color: inherit;
 }
 
-.container {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
 .important-word {
   font-family: "BornLosersSans", sans-serif;
   font-size: 96px;
@@ -34,4 +27,11 @@ a {
   font-size: 36px;
   line-height: 104%;
   text-transform: uppercase;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }

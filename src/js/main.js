@@ -92,7 +92,8 @@ tl3
 video.addEventListener("ended", () => {
   videoContainer.style.opacity = 0;
   videoContainer.style.pointerEvents = "none";
-  gsap.to(window, { duration: 0, scrollTo: { y: ".issue", offsetY: 0 } });
+  gsap.to(window, { duration: 0, scrollTo: { y: ".issue", offsetY: 0 } }),
+    "-=3";
 });
 
 const tl4 = gsap.timeline({
@@ -132,7 +133,7 @@ gsap
       pin: true,
       scrub: true,
       anticipatePin: 1,
-      markers: true,
+      markers: false,
     },
   })
   .to(".horizontal-image", {
@@ -153,7 +154,7 @@ const tlVieux = gsap.timeline({
     end: "bottom+=150%",
     pin: true,
     scrub: true,
-    markers: true,
+    markers: false,
   },
 });
 
@@ -193,7 +194,7 @@ const tlEnd = gsap.timeline({
     end: "bottom top",
     scrub: 1,
     pin: true,
-    markers: true,
+    markers: false,
   },
 });
 
@@ -243,10 +244,10 @@ document.addEventListener("DOMContentLoaded", () => {
     blackBtn.style.opacity = 0;
     blackBtn.style.pointerEvents = "none";
 
-    video.addEventListener("ended", () => {
+    video.addEventListener("play", () => {
       gsap.to(whiteBtn, {
         opacity: 0,
-        duration: 0.5,
+        duration: 3,
         onComplete: () => {
           whiteBtn.style.pointerEvents = "none";
         },
@@ -258,14 +259,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-let lastScroll = 0;
+const warning = document.querySelector(".scroll-warning");
+let lastScroll = window.scrollY;
 
 window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
 
   if (currentScroll < lastScroll) {
-    window.scrollTo(0, lastScroll);
+    warning.style.opacity = 1;
+
+    requestAnimationFrame(() => {
+      window.scrollTo(0, lastScroll);
+    });
   } else {
+    warning.style.opacity = 0;
     lastScroll = currentScroll;
   }
 });

@@ -64,6 +64,11 @@
       </button>
     </a>
 
+    <p class="scroll-warning less-important-word">
+      il est <span class="important-word">impossible</span> de revenir en
+      <span class="important-word">arriere !</span>
+    </p>
+
     <div class="sequence sequence-1 visible">
       <div class="container intro">
         <div class="intro-bird-image">
@@ -174,7 +179,7 @@
         </div>
       </div>
 
-      <div class="container end">
+      <footer class="container end">
         <img class="end-couv-bd" src="images/couv-bd.png" alt="" />
         <div class="end-all-infos">
           <div class="end-title">chateau de sable</div>
@@ -245,13 +250,13 @@
             />
           </svg>
         </button>
-      </div>
+      </footer>
 
       <script>
         document
           .getElementById("firstVisitBtn")
           .addEventListener("click", function () {
-            const url = "http://localhost:54137/";
+            const url = "http://liendemonsite";
             window.open(url + "?v=" + new Date().getTime(), "_blank");
           });
       </script>
