@@ -257,3 +257,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.scrollY;
+
+  if (currentScroll < lastScroll) {
+    window.scrollTo(0, lastScroll);
+  } else {
+    lastScroll = currentScroll;
+  }
+});
