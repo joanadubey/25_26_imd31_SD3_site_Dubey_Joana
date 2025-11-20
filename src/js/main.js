@@ -107,7 +107,7 @@ const tl4 = gsap.timeline({
 });
 
 tl4
-  .to(".issue-soleil", { x: "100%", y: "-190%", duration: 5 })
+  .to(".issue-soleil", { x: "100%", y: "-190%", duration: 5 }, "+=5")
   .to(".issue-text", { x: "-30%", y: "430%", duration: 5 }, "-=5")
   .to(".issue", {
     scale: 20,
@@ -143,7 +143,8 @@ gsap
       ),
     ease: "none",
   })
-  .to(".horizontal-image", { opacity: 0 });
+  .to(".horizontal-image", { opacity: 0 }),
+  "+=2";
 
 const tlVieux = gsap.timeline({
   scrollTrigger: {
@@ -196,7 +197,7 @@ const tlEnd = gsap.timeline({
   },
 });
 
-tlEnd.to(".main-button", { opacity: 0, ease: "power2.out" });
+tlEnd.to(".black-button", { opacity: 0, ease: "power2.out" });
 tlEnd.to(".end-couv-bd", {
   x: "0%",
   opacity: 1,
@@ -214,28 +215,49 @@ tlEnd.to(
   "-=0.5"
 );
 
+gsap.fromTo(
+  ".reload-button",
+  { opacity: 0, y: 50 }, // invisible et légèrement en bas
+  {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".end",
+      start: "bottom+=50 top", // déclenche après la fin de .end
+      end: "bottom top+=300", // zone où le bouton reste visible
+      toggleActions: "play none none reverse",
+      markers: true,
+    },
+  }
+);
+
+// Fonction du bouton
+document.getElementById("firstVisitBtn").addEventListener("click", function () {
+  const url = "http://localhost:64143/";
+  window.open(url + "?v=" + new Date().getTime(), "_blank");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const whiteBtn = document.querySelector("#fixed-btn");
   const blackBtn = document.querySelector("#fixed-btn-black");
   const video = document.querySelector("#Video");
 
   if (whiteBtn && blackBtn && video) {
-    // On cache le bouton noir au départ, mais toujours dans le flux
     blackBtn.style.opacity = 0;
     blackBtn.style.pointerEvents = "none";
 
     video.addEventListener("ended", () => {
-      // Fade out du bouton blanc
       gsap.to(whiteBtn, {
         opacity: 0,
         duration: 0.5,
         onComplete: () => {
-          whiteBtn.style.pointerEvents = "none"; // désactive le clic
+          whiteBtn.style.pointerEvents = "none";
         },
       });
 
-      // Fade in du bouton noir
-      blackBtn.style.pointerEvents = "auto"; // active le clic
+      blackBtn.style.pointerEvents = "auto";
       gsap.to(blackBtn, { opacity: 1, duration: 0.5 });
     });
   }
