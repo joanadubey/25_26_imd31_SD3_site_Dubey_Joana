@@ -1,6 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 // Séquence 1
 const tl = gsap.timeline({
@@ -45,6 +47,26 @@ const tl2 = gsap.timeline({
     markers: false,
   },
 });
+
+const arrow = document.querySelector(".intro-arrow");
+let t = 0;
+
+function animateArrow() {
+  // vitesse (plus petit = plus lent)
+  t += 0.02;
+
+  // amplitude du mouvement (10 = discret, 20 = plus visible)
+  const amplitude = 10;
+
+  // mouvement basé sur un sinus pour un effet fluide
+  const y = Math.sin(t) * amplitude;
+
+  arrow.style.transform = `translateX(-50%) translateY(${y}px)`;
+
+  requestAnimationFrame(animateArrow);
+}
+
+animateArrow();
 
 tl2
   .to(".vacancier-text", { ease: "sine.inOut", opacity: "100" })
