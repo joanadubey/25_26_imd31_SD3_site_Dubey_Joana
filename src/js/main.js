@@ -190,7 +190,7 @@ tlVieux
     { x: "150%", y: "150%", opacity: 0, duration: 2, ease: "power2.in" },
     "<"
   )
-  .to(".vieux-text", { ease: "sine.inOut", opacity: "1" });
+  .to(".vieux-text", { ease: "sine.inOut", opacity: "1" }, "-=2");
 
 // Timeline pour la partie "end"
 const tlEnd = gsap.timeline({
@@ -204,6 +204,11 @@ const tlEnd = gsap.timeline({
   },
 });
 
+tlEnd.to(".main-button", {
+  opacity: 0,
+  ease: "power2.out",
+});
+
 tlEnd.to(".end-couv-bd", {
   x: "0%",
   opacity: 1,
@@ -212,6 +217,11 @@ tlEnd.to(".end-couv-bd", {
 });
 tlEnd.to(
   ".end-all-infos > div",
+  { x: "0%", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.3 },
+  "-=0.5"
+);
+tlEnd.to(
+  ".end-button",
   { x: "0%", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.3 },
   "-=0.5"
 );
