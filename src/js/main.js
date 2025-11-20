@@ -159,13 +159,13 @@ const tlVieux = gsap.timeline({
 
 tlVieux.fromTo(
   ".vieux-femme",
-  { x: "-150%", y: "-150%", opacity: 0, duration: 5 },
-  { x: "0%", y: "0%", opacity: 1, ease: "sine.inOut", duration: 5 }
+  { x: "-150%", y: "-150%", opacity: 0, duration: 12 },
+  { x: "0%", y: "0%", opacity: 1, ease: "sine.inOut", duration: 12 }
 );
 tlVieux.fromTo(
   ".vieux-homme",
   { x: "100%", y: "100%", opacity: 0, duration: 5 },
-  { x: "0%", y: "0%", opacity: 1, ease: "sine.inOut", duration: 5 },
+  { x: "0%", y: "0%", opacity: 1, ease: "sine.inOut", duration: 12 },
   "<"
 );
 
@@ -176,7 +176,7 @@ tlVieux
     opacity: 0,
     duration: 2,
     ease: "power2.in",
-    delay: 5,
+    delay: 7,
   })
   .to(
     ".vieux-homme",
@@ -198,6 +198,7 @@ const tlEnd = gsap.timeline({
 });
 
 tlEnd.to(".black-button", { opacity: 0, ease: "power2.out" });
+
 tlEnd.to(".end-couv-bd", {
   x: "0%",
   opacity: 1,
@@ -215,29 +216,23 @@ tlEnd.to(
   "-=0.5"
 );
 
-gsap.fromTo(
-  ".reload-button",
-  { opacity: 0, y: 50 }, // invisible et légèrement en bas
+tlEnd.to(".end > *:not(.end-reload-button)", {
+  opacity: 0,
+  duration: 1,
+  ease: "power2.out",
+  delay: 10,
+});
+
+tlEnd.to(
+  ".end-reload-button",
   {
     opacity: 1,
-    y: 0,
     duration: 1,
     ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".end",
-      start: "bottom+=50 top", // déclenche après la fin de .end
-      end: "bottom top+=300", // zone où le bouton reste visible
-      toggleActions: "play none none reverse",
-      markers: true,
-    },
-  }
+    pointerEvents: "auto",
+  },
+  "-=0.5"
 );
-
-// Fonction du bouton
-document.getElementById("firstVisitBtn").addEventListener("click", function () {
-  const url = "http://localhost:64143/";
-  window.open(url + "?v=" + new Date().getTime(), "_blank");
-});
 
 document.addEventListener("DOMContentLoaded", () => {
   const whiteBtn = document.querySelector("#fixed-btn");

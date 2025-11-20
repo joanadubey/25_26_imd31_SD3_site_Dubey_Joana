@@ -34,7 +34,6 @@
   }
 }
 
-/* Position fixed pour les boutons */
 #fixed-btn,
 #fixed-btn-black {
   position: fixed;
@@ -46,7 +45,6 @@
   transition: opacity 0.5s ease;
 }
 
-/* Bouton blanc */
 .white-button svg .btn-bg {
   fill: white;
 }
@@ -60,7 +58,6 @@
   fill: white;
 }
 
-/* Bouton noir */
 .black-button svg .btn-bg {
   fill: black;
 }
@@ -74,7 +71,6 @@
   fill: white;
 }
 
-/* Gestion de la timeline */
 .white-button {
   opacity: 1;
 }

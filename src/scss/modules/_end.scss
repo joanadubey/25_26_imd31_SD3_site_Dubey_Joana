@@ -72,3 +72,19 @@
 .end-button {
   opacity: 0;
 }
+
+.end-reload-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999;
+  fill: var(--black);
+}
+
+.end-reload-button:hover svg .btn-bg {
+  fill: var(--pink);
+  transition: fill 0.3s ease;
+}
