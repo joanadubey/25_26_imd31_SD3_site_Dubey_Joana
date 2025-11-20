@@ -1,0 +1,97 @@
+.custom-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.5s ease;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    .btn-bg {
+      transition: fill 0.3s ease;
+    }
+
+    .btn-text {
+      transition: fill 0.3s ease;
+    }
+  }
+
+  &:hover {
+    svg {
+      .btn-bg {
+        fill: #cd0c7a;
+      }
+      .btn-text {
+        fill: white;
+      }
+    }
+  }
+}
+
+/* Position fixed pour les boutons */
+#fixed-btn,
+#fixed-btn-black {
+  position: fixed;
+  top: 5%;
+  left: 3%;
+  z-index: 9999;
+  width: 256px;
+  height: 71px;
+  transition: opacity 0.5s ease;
+}
+
+/* Bouton blanc */
+.white-button svg .btn-bg {
+  fill: white;
+}
+.white-button svg .btn-text {
+  fill: black;
+}
+.white-button:hover svg .btn-bg {
+  fill: #cd0c7a;
+}
+.white-button:hover svg .btn-text {
+  fill: white;
+}
+
+/* Bouton noir */
+.black-button svg .btn-bg {
+  fill: black;
+}
+.black-button svg .btn-text {
+  fill: white;
+}
+.black-button:hover svg .btn-bg {
+  fill: #cd0c7a;
+}
+.black-button:hover svg .btn-text {
+  fill: white;
+}
+
+/* Gestion de la timeline */
+.white-button {
+  opacity: 1;
+}
+.black-button {
+  opacity: 0;
+}
+
+.white-button.hidden {
+  opacity: 0;
+}
+
+.black-button.visible {
+  opacity: 1;
+}
+
+#fixed-btn-black {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}

@@ -19,7 +19,8 @@
 .chateau-text {
   position: absolute;
   top: 20%;
-  left: 35%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 7;
   color: var(--pink);
   font-size: 45;

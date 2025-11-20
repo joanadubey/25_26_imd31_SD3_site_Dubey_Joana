@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollToPlugin);
 const video = document.querySelector("#Video");
 const videoContainer = document.querySelector(".container.video");
 
-// Séquence 1
 const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".intro",
@@ -23,11 +22,7 @@ tl.to(".intro-bird-image", { x: "390%", y: "-200%", duration: 8, ease: "none" })
   .to(".intro-crique-image", { y: "-100%", duration: 5, ease: "none" })
   .to(
     ".intro-crique-text",
-    {
-      opacity: 1,
-      duration: 4,
-      ease: "sine.inOut",
-    },
+    { opacity: 1, duration: 4, ease: "sine.inOut" },
     "+=2"
   )
   .to(".intro-crique-image", {
@@ -62,11 +57,7 @@ const tl2 = gsap.timeline({
 });
 
 tl2
-  .to(".vacancier-text", {
-    opacity: 1,
-    duration: 4,
-    ease: "sine.inOut",
-  })
+  .to(".vacancier-text", { opacity: 1, duration: 4, ease: "sine.inOut" })
   .to(".vacancier-herbe-right", { x: "-90%", duration: 2 })
   .to(".vacancier-herbe-left", { x: "90%", duration: 2 }, "-=1.95")
   .to(".vacancier-right", { x: "-110%", duration: 3.2 }, "-=1.8")
@@ -75,7 +66,6 @@ tl2
   .to(".vacancier-herbe-right, .vacancier-right", { x: "70%", duration: 1 })
   .to(".vacancier-herbe-left, .vacancier-left", { x: "-70%" }, "-=1");
 
-// Séquence 3
 const tl3 = gsap.timeline({
   scrollTrigger: {
     trigger: ".chateau",
@@ -88,11 +78,7 @@ const tl3 = gsap.timeline({
 });
 
 tl3
-  .to(".chateau-text", {
-    opacity: 1,
-    duration: 4,
-    ease: "sine.inOut",
-  })
+  .to(".chateau-text", { opacity: 1, duration: 4, ease: "sine.inOut" })
   .to(".chateau-image", { y: "-140%", duration: 10 })
   .to(".chateau-phrase", { y: "-200%", duration: "5" }, "-=5")
   .to(".chateau-image", { y: "-300%", duration: 12 })
@@ -103,17 +89,12 @@ tl3
     video.play();
   });
 
-// Quand la vidéo se termine
 video.addEventListener("ended", () => {
   videoContainer.style.opacity = 0;
   videoContainer.style.pointerEvents = "none";
-  gsap.to(window, {
-    duration: 0,
-    scrollTo: { y: ".issue", offsetY: 0 },
-  });
+  gsap.to(window, { duration: 0, scrollTo: { y: ".issue", offsetY: 0 } });
 });
 
-// Timeline pour la première partie (soleil, texte, scale)
 const tl4 = gsap.timeline({
   scrollTrigger: {
     trigger: ".issue",
@@ -142,7 +123,6 @@ tl4
     },
   });
 
-// Timeline pour le scroll horizontal
 gsap
   .timeline({
     scrollTrigger: {
@@ -205,7 +185,6 @@ tlVieux
   .to(".vieux-text", { ease: "sine.inOut", opacity: "1", duration: 3 }, "-=2")
   .to(".vieux-text", { ease: "sine.inOut", opacity: "0", duration: 3 }, "+=7");
 
-// Timeline pour la partie "end"
 const tlEnd = gsap.timeline({
   scrollTrigger: {
     trigger: ".end",
@@ -217,11 +196,7 @@ const tlEnd = gsap.timeline({
   },
 });
 
-tlEnd.to(".main-button", {
-  opacity: 0,
-  ease: "power2.out",
-});
-
+tlEnd.to(".main-button", { opacity: 0, ease: "power2.out" });
 tlEnd.to(".end-couv-bd", {
   x: "0%",
   opacity: 1,
@@ -233,9 +208,35 @@ tlEnd.to(
   { x: "0%", opacity: 1, duration: 1, ease: "power2.out", stagger: 0.3 },
   "-=0.5"
 );
-
 tlEnd.to(
   ".end-button",
   { x: "0%", opacity: 1, duration: 1, ease: "power2.out" },
   "-=0.5"
 );
+
+document.addEventListener("DOMContentLoaded", () => {
+  const whiteBtn = document.querySelector("#fixed-btn");
+  const blackBtn = document.querySelector("#fixed-btn-black");
+  const video = document.querySelector("#Video");
+
+  if (whiteBtn && blackBtn && video) {
+    // On cache le bouton noir au départ, mais toujours dans le flux
+    blackBtn.style.opacity = 0;
+    blackBtn.style.pointerEvents = "none";
+
+    video.addEventListener("ended", () => {
+      // Fade out du bouton blanc
+      gsap.to(whiteBtn, {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          whiteBtn.style.pointerEvents = "none"; // désactive le clic
+        },
+      });
+
+      // Fade in du bouton noir
+      blackBtn.style.pointerEvents = "auto"; // active le clic
+      gsap.to(blackBtn, { opacity: 1, duration: 0.5 });
+    });
+  }
+});
